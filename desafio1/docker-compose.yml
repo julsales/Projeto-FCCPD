@@ -8,7 +8,6 @@ networks:
         - subnet: 172.25.0.0/16
 
 services:
-  # Servidor Web
   servidor-web:
     build:
       context: ./servidor
@@ -29,7 +28,6 @@ services:
       retries: 3
       start_period: 10s
 
-  # Cliente HTTP
   cliente-http:
     build:
       context: ./cliente
