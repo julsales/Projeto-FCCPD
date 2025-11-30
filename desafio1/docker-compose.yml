@@ -1,0 +1,45 @@
+version: '3.8'
+
+networks:
+  rede-desafio:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
+services:
+  # Servidor Web
+  servidor-web:
+    build:
+      context: ./servidor
+      dockerfile: Dockerfile
+    container_name: servidor-web
+    networks:
+      rede-desafio:
+        ipv4_address: 172.25.0.10
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs:/app/logs 
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Cliente HTTP
+  cliente-http:
+    build:
+      context: ./cliente
+      dockerfile: Dockerfile
+    container_name: cliente-http
+    networks:
+      rede-desafio:
+        ipv4_address: 172.25.0.20
+    volumes:
+      - ./logs:/app/logs  
+    depends_on:
+      - servidor-web
+    restart: unless-stopped

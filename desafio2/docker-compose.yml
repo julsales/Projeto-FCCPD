@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  database:
+    build: .
+    container_name: sqlite-container
+    volumes:
+      - ./dados:/app/dados
+    environment:
+      - DB_PATH=/app/dados/banco.db
