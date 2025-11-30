@@ -4,13 +4,13 @@
 
 Demonstra persistência de dados usando volumes Docker. Container escreve dados em banco SQLite que sobrevive mesmo após remoção do container.
 
-## Funicionamento
-
-Script Python detecta se banco existe: se não, cria e insere dados, se sim, apenas lê. SQLite com volume mapeado para `./dados` garante persistência fora do container.
-
 ## Decisões Técnicas
 
 SQLite escolhido pela simplicidade (arquivo único). Volume Docker mapeia `./dados` do host para `/app/dados` no container. Lógica de verificação (`os.path.exists()`) evita duplicação e demonstra persistência claramente.
+
+## Funicionamento
+
+Script Python detecta se banco existe: se não, cria e insere dados, se sim, apenas lê. SQLite com volume mapeado para `./dados` garante persistência fora do container.
 
 ## Como Executar
 

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  servico-a:
+    build: ./servico-a
+    container_name: servico-a
+    ports:
+      - "8001:8001"
+    networks:
+      - micro-network
+
+  servico-b:
+    build: ./servico-b
+    container_name: servico-b
+    ports:
+      - "8002:8002"
+    environment:
+      - SERVICO_A_URL=http://servico-a:8001
+    depends_on:
+      - servico-a
+    networks:
+      - micro-network
+
+networks:
+  micro-network:
+    driver: bridge

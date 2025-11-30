@@ -4,13 +4,13 @@
 
 Aplicação web demonstra orquestração de três serviços na rede bridge dependentes com Docker Compose. Flask comunica-se com PostgreSQL (banco) e Redis (cache).
 
-## Funcionamento
-
-Endpoint raiz (`/`) incrementa contador Redis, insere registro no PostgreSQL e retorna número do visitante. Existe a comunicação simultânea entre os três serviços.
-
 ## Decisões Técnicas
 
 Sleep de 10 segundos garante serviços prontos. Redis para contador rápido em memória, PostgreSQL para histórico persistente com timestamps. Variáveis de ambiente evitam credenciais hardcoded. Rede bridge permite comunicação por nomes DNS (`postgres`, `redis`). Volume nomeado persiste dados do PostgreSQL.
+
+## Funcionamento
+
+Endpoint raiz (`/`) incrementa contador Redis, insere registro no PostgreSQL e retorna número do visitante. Existe a comunicação simultânea entre os três serviços.
 
 ## Como Executar
 

@@ -8,14 +8,13 @@ Dois containers Docker se comunicam através de rede Docker customizada. Servido
 
 Rede customizada **rede-desafio** (driver bridge, subnet 172.25.0.0/16) foi criada no docker-compose.yml. Conecta servidor (IP 172.25.0.10) rodando Flask 3.0.0 com endpoints `/` e `/status`, e cliente (IP 172.25.0.20) usando requests 2.31.0. DNS interno permite comunicação por nome ao invés de IP.
 
-## Funcionamento
-
-Docker Compose cria a rede e inicia containers. Cliente envia GET para `http://servidor-web:8080` a cada 5 segundos. Servidor incrementa contador, loga evento e retorna JSON com mensagem, timestamp, total de requisições e container ID. Cliente processa resposta e registra em log. Ciclo se repete continuamente.
-
 ## Decisões Técnicas
 
 Python 3.11 foi escolhido pela simplicidade e bibliotecas maduras. Flask oferece API REST minimalista, enquanto requests é padrão para HTTP em Python. IPs fixos facilitam debugging. DNS automático permite comunicação por nome (`servidor-web`). Logging duplo (console + arquivo) com volumes locais para acesso fácil. Docker Compose gerencia infraestrutura e dependências.
 
+## Funcionamento
+
+Docker Compose cria a rede e inicia containers. Cliente envia GET para `http://servidor-web:8080` a cada 5 segundos. Servidor incrementa contador, loga evento e retorna JSON com mensagem, timestamp, total de requisições e container ID. Cliente processa resposta e registra em log. Ciclo se repete continuamente.
 
 ## Como Executar
 
