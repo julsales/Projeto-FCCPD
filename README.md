@@ -1,4 +1,4 @@
-# Projeto FCCPD - Fundamentos de Computação Concorrente, Paralela e Destribuída 
+# Projeto FCCPD - Fundamentos de Computação Concorrente, Paralela e Distribuída 
 
 [![Docker](https://img.shields.io/badge/Docker-Enabled-blue?logo=docker)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/Python-3.11-green?logo=python)](https://www.python.org/)
